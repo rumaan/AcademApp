@@ -18,6 +18,6 @@ public class SplashPageActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        startActivity(new Intent(SplashPageActivity.this, HomeActivity.class));
+        startActivity(new Intent(SplashPageActivity.this, MainActivity.class));
     }
 }

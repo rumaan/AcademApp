@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.rumaan.academapp.MainActivity">
+
+    <!-- Dummy layout for holding no network -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:background="@color/Emerald_flat"
+        android:elevation="0dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/no_internet_connection"
+            android:src="@drawable/ic_signal_wifi_off_black_24dp" />
+
+    </FrameLayout>
+
+    <!-- Custom Toolbar here -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:elevation="4dp">
+
+        <Button
+            android:id="@+id/btn_forum"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:drawableTop="@drawable/ic_forum_black_24dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Forum"
+            android:textColor="@color/Asphalt_grey"
+            android:theme="@style/ButtonStyle" />
+
+        <Button
+            android:id="@+id/btn_academics"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:drawableTop="@drawable/ic_school_black_24dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Academics"
+            android:textColor="@color/Asphalt_grey"
+            android:theme="@style/ButtonStyle" />
+
+        <Button
+            android:id="@+id/btn_about"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:drawableTop="@drawable/ic_info_outline_black_24dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="About Me"
+            android:textColor="@color/Asphalt_grey"
+            android:theme="@style/ButtonStyle" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
