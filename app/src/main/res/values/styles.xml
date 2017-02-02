@@ -1,0 +1,37 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/Asphalt_grey</item>
+        <item name="colorPrimary">@color/Emerald_flat</item>
+        <item name="colorPrimaryDark">@color/green</item>
+        <item name="colorAccent">@color/Asphalt_grey</item>
+        <item name="android:windowBackground">@android:color/background_light</item>
+        <item name="android:statusBarColor">@color/Emerald_flat</item>
+    </style>
+
+    <style name="SplashPageTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@drawable/splash_page</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="CondensedTextTheme" parent="Theme.AppCompat">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
+
+    <style name="ButtonStyle" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:colorControlHighlight">@color/Emerald_flat</item>
+        <item name="android:padding">6dp</item>
+    </style>
+
+</resources>

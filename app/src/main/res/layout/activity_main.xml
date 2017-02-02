@@ -12,16 +12,39 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="4"
-        android:background="@color/Emerald_flat"
+        android:id="@+id/dummy_layout"
         android:elevation="0dp">
 
-        <ImageView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:contentDescription="@string/no_internet_connection"
-            android:src="@drawable/ic_signal_wifi_off_black_24dp" />
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/connection_error"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textSize="18sp"
+                android:textColor="@color/Asphalt_grey"
+                android:contentDescription="@string/no_internet_connection"
+                android:drawableTop="@drawable/ic_signal_wifi_off_black_24dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tap here to retry"
+                android:textAllCaps="true"
+                android:layout_gravity="center"
+                android:padding="6dp"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/Asphalt_grey"/>
 
+        </LinearLayout>
     </FrameLayout>
 
     <!-- Custom Toolbar here -->
@@ -40,7 +63,7 @@
             android:clickable="true"
             android:drawableTop="@drawable/ic_forum_black_24dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="Forum"
+            android:text="@string/forum"
             android:textColor="@color/Asphalt_grey"
             android:theme="@style/ButtonStyle" />
 
@@ -52,7 +75,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:drawableTop="@drawable/ic_school_black_24dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="Academics"
+            android:text="@string/academics"
             android:textColor="@color/Asphalt_grey"
             android:theme="@style/ButtonStyle" />
 
@@ -64,7 +87,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:drawableTop="@drawable/ic_info_outline_black_24dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="About Me"
+            android:text="@string/about_me"
             android:textColor="@color/Asphalt_grey"
             android:theme="@style/ButtonStyle" />
 

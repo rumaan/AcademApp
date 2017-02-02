@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AcademApp</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="connection_error">connection error</string>
+    <string name="forum">Forum</string>
+    <string name="academics">Academics</string>
+    <string name="about_me">About Me</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
