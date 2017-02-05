@@ -1,4 +1,4 @@
 # academ-app
 Android &amp; Web Application for Academics.
-Wait.. having issues recently
-will have src soon
+Students will be able to check their attendance, performace, statistics etc.
+Lectures can be posted onto Forum Section for easy sharing.
