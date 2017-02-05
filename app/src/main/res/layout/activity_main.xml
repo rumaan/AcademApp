@@ -13,6 +13,7 @@
         android:layout_height="0dp"
         android:layout_weight="4"
         android:id="@+id/dummy_layout"
+        android:visibility="invisible"
         android:elevation="0dp">
 
         <LinearLayout
