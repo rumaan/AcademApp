@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "841721693962",
+    "firebase_url": "https://academapp-fbb47.firebaseio.com",
+    "project_id": "academapp-fbb47",
+    "storage_bucket": "academapp-fbb47.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841721693962:android:259c0a33b78ac071",
+        "android_client_info": {
+          "package_name": "com.rumaan.academapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841721693962-ocmttu4bjk9mfvb36ae0i8iukf4jgq2a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi9enPsGb3KAlMjO9TvAR_2biLA375WzE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "841721693962-ocmttu4bjk9mfvb36ae0i8iukf4jgq2a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
