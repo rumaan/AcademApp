@@ -11,6 +11,7 @@
         <item name="colorPrimaryDark">@color/green</item>
         <item name="colorAccent">@color/Asphalt_grey</item>
         <item name="android:windowBackground">@android:color/background_light</item>
+        <item name="android:navigationBarColor">@color/Emerald_flat</item>
         <item name="android:statusBarColor">@color/Emerald_flat</item>
     </style>
 
