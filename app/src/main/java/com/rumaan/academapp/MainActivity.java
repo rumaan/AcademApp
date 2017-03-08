@@ -15,9 +15,12 @@ import com.rumaan.academapp.databinding.ActivityHomeBinding;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnTabSelectListener {
 
+    /* Data binding object */
     ActivityHomeBinding activityHomeBinding;
+
     /* Bottom bar object */
     private BottomBar bottomBar;
+
     /* For back button */
     private int count = 0;
 
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (tabId) {
             case R.id.forum_tab_item:
                 // change the status bar background accordingly
-                getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.Emerald_flat));
+                getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.blue));
 
                 ForumFragment forumFragment = new ForumFragment();
 
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.profile_tab_item:
                 // change the status bar background accordingly
-                getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.blue));
+                getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.Emerald_flat));
 
                 // u get the point.
                 ProfileFragment profileFragment = new ProfileFragment();

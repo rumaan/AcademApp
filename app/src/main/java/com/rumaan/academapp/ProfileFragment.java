@@ -17,8 +17,6 @@ import com.rumaan.academapp.databinding.FragmentProfileBinding;
  */
 public class ProfileFragment extends Fragment {
 
-    private FragmentProfileBinding fragmentProfileBinding;
-
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -28,15 +26,15 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return FragmentProfileBinding.inflate(inflater, container, false).getRoot();
+
+        FragmentProfileBinding fragmentProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
+        View view = fragmentProfileBinding.getRoot();
+        return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        fragmentProfileBinding = DataBindingUtil.getBinding(view);
-
-        fragmentProfileBinding.testText.setTypeface(CustomFont.getInstance(getContext()).getTypeFace(CustomFont.Regular));
     }
 }

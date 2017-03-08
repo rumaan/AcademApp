@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <tabs>
     <tab
-        barColorWhenSelected="@color/Emerald_flat"
+        barColorWhenSelected="@color/blue"
         icon="@drawable/ic_forum"
         id="@+id/forum_tab_item"
         title="Forum"/>
@@ -11,7 +11,8 @@
         id="@+id/academics_tab_item"
         title="Academics"/>
     <tab
-        barColorWhenSelected="@color/blue"
+
+        barColorWhenSelected="@color/Emerald_flat"
         icon="@drawable/ic_assignment_ind"
         id="@+id/profile_tab_item"
         title="Profile"/>

@@ -9,13 +9,13 @@
 
     <!-- Dummy layout for holding no network -->
     <FrameLayout
+        android:id="@+id/dummy_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="4"
         android:clickable="true"
-        android:id="@+id/dummy_layout"
-        android:visibility="invisible"
-        android:elevation="0dp">
+        android:elevation="0dp"
+        android:visibility="invisible">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -25,26 +25,26 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/connection_error"
-                android:fontFamily="sans-serif-condensed"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:textSize="18sp"
-                android:textColor="@color/Asphalt_grey"
                 android:contentDescription="@string/no_internet_connection"
-                android:drawableTop="@drawable/ic_signal_wifi_off_black_24dp" />
+                android:drawableTop="@drawable/ic_signal_wifi_off_black_24dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/connection_error"
+                android:textAllCaps="true"
+                android:textColor="@color/Asphalt_grey"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tap here to retry"
-                android:textAllCaps="true"
                 android:layout_gravity="center"
-                android:padding="6dp"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                android:textStyle="bold"
                 android:fontFamily="sans-serif-condensed"
-                android:textColor="@color/Asphalt_grey"/>
+                android:padding="6dp"
+                android:text="Tap here to retry"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/Asphalt_grey"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
     </FrameLayout>
