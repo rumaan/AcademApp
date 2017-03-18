@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashPageActivity extends AppCompatActivity {
 
+
     private final String TAG = "SplashPageActivity";
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -16,7 +17,6 @@ public class SplashPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
     }
 
     @Override
