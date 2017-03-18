@@ -16,9 +16,9 @@ public class CustomFont {
     public static final int Medium = 2;
     public static final int Light = 4;
     private static final String rootDir = "fonts/";
-    private static final String REGULAR = "regular.otf";
-    private static final String BOLD = "bold.otf";
-    private static final String MEDIUM = "medium.otf";
+    private static final String REGULAR = "regular.ttf";
+    private static final String BOLD = "bold.ttf";
+    private static final String MEDIUM = "medium.ttf";
     private static final String LIGHT = "light.otf";
     private static CustomFont instance;
     private Context mContext;

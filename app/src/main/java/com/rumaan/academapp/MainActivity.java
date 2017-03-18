@@ -1,6 +1,8 @@
 package com.rumaan.academapp;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.IdRes;
@@ -12,6 +14,9 @@ import android.widget.Toast;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 import com.rumaan.academapp.databinding.ActivityHomeBinding;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnTabSelectListener {
 
@@ -25,8 +30,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int count = 0;
 
     @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/regular.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build());
 
         /* Using data binding */
         activityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
@@ -52,6 +67,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // change the status bar background accordingly
                 getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.blue));
 
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    // set the navigation bar color
+                    getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.blue));
+                }
                 ForumFragment forumFragment = new ForumFragment();
 
                 getSupportFragmentManager()
@@ -59,10 +78,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .replace(activityHomeBinding.rootView.getId(), forumFragment)
                         .commit();
 
+
                 break;
             case R.id.academics_tab_item:
                 // change the status bar background accordingly
-                getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.Asphalt_grey));
+                getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.Emerald_flat));
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    // set the navigation bar color
+                    getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.Emerald_flat));
+
+                }
 
                 // replace with academ fragment
                 AcademicsFragment academicsFragment = new AcademicsFragment();
@@ -74,8 +100,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.profile_tab_item:
                 // change the status bar background accordingly
-                getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.Emerald_flat));
+                getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.grey));
 
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    // set the navigation bar color
+                    getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.Asphalt_grey));
+                }
                 // u get the point.
                 ProfileFragment profileFragment = new ProfileFragment();
                 getSupportFragmentManager()
