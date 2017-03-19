@@ -2,4 +2,9 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="circular_meter_big">160dp</dimen>
+    <dimen name="circular_meter_medium">150dp</dimen>
+    <dimen name="circular_meter_big_text">60sp</dimen>
+    <dimen name="circulr_meter_medium_text">50sp</dimen>
+    <dimen name="circular_meter_medium_header_text">16sp</dimen>
 </resources>

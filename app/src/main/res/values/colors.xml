@@ -10,4 +10,7 @@
     <color name="dull_grey">#aaaaaa</color>
     <color name="Dark_green">#00743f</color>
     <color name="blue">#0486db</color>
+    <color name="warning">#F1C40F</color>
+    <color name="danger">#E74C3C</color>
+    <color name="safe">#2ecc71</color>
 </resources>

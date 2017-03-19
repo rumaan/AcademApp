@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.rumaan.academapp.databinding.FragmentProfileBinding;
 
 
 /**
@@ -26,6 +27,9 @@ public class ProfileFragment extends Fragment {
     private TextView profileHeaderText;
     private CircularImageView profileAvatarImage;
 
+    // Binding object
+    private FragmentProfileBinding fragmentProfileBinding;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -34,9 +38,10 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // instantiate binding object
+        fragmentProfileBinding = FragmentProfileBinding.inflate(inflater, container, false);
+
         // Inflate the layout for this fragment
-
-
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
@@ -60,13 +65,13 @@ public class ProfileFragment extends Fragment {
         profileAvatarImage.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                // TODO: 19-Mar-17 show the larger image preview
                 Toast.makeText(view.getContext(), "Profile Image", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
-
-        profileHeaderText.setTypeface(CustomFont.getInstance(view.getContext()).getTypeFace(2));
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
