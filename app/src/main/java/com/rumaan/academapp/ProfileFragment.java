@@ -1,13 +1,19 @@
 package com.rumaan.academapp;
 
 
+import android.*;
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +30,11 @@ import com.rumaan.academapp.databinding.FragmentProfileBinding;
 public class ProfileFragment extends Fragment {
 
     private static final int REQUEST_CODE = 11;
+    private static final int PERMISSION_REQUEST_CODE = 10;
     private TextView profileHeaderText;
     private CircularImageView profileAvatarImage;
+
+    private Intent intent;
 
     // Binding object
     private FragmentProfileBinding fragmentProfileBinding;
@@ -52,13 +61,26 @@ public class ProfileFragment extends Fragment {
         profileHeaderText = (TextView) view.findViewById(R.id.profile_header);
         profileAvatarImage = (CircularImageView) view.findViewById(R.id.profile_avatar);
 
+        // create choose profile image intent
+        intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+
         profileAvatarImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // change the default image
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                intent.setType("image/*");
-                startActivityForResult(intent, REQUEST_CODE);
+                // check permission here
+                if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // permissions not available
+                    ActivityCompat.requestPermissions(
+                            getActivity(),
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            PERMISSION_REQUEST_CODE);
+                } else {
+                    startActivityForResult(intent, REQUEST_CODE);
+                }
+
             }
         });
 
@@ -72,6 +94,16 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            // check for permissions here
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                startActivityForResult(intent, REQUEST_CODE);
+            }
+        }
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

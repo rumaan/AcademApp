@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         count++;
         if (count > 1) {
             /* If count is greater than 1, quit */
-            super.onBackPressed();
+            finishAffinity();
         } else {
             Toast.makeText(this, "Press back again to Leave!", Toast.LENGTH_SHORT).show();
 

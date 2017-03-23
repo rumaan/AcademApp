@@ -54,7 +54,6 @@ public class Avatar {
     }
 
     public Uri getUri() {
-
         return uri;
     }
 
