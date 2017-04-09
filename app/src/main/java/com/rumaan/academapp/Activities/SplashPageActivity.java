@@ -1,4 +1,4 @@
-package com.rumaan.academapp;
+package com.rumaan.academapp.Activities;
 
 import android.Manifest;
 import android.content.Intent;
@@ -17,9 +17,13 @@ import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.rumaan.academapp.R;
 
 import java.util.Arrays;
 
+/*
+*  Check for Authentication here
+* */
 public class SplashPageActivity extends AppCompatActivity {
 
     // sign-in intent call request code
@@ -39,6 +43,7 @@ public class SplashPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         mAuth = FirebaseAuth.getInstance();
+
 
         setAuthListener();
     }
@@ -93,6 +98,10 @@ public class SplashPageActivity extends AppCompatActivity {
                     // User is signed in
                     Log.d(TAG, "onAuthChanged: signed in");
                     startActivity(new Intent(SplashPageActivity.this, MainActivity.class));
+
+                    // get the uid
+                    Toast.makeText(SplashPageActivity.this, FirebaseAuth.getInstance().getCurrentUser().getUid(), Toast.LENGTH_SHORT).show();
+
                     finish();
                 } else {
                     // User is signed out

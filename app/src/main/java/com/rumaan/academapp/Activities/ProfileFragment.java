@@ -1,7 +1,6 @@
-package com.rumaan.academapp;
+package com.rumaan.academapp.Activities;
 
 
-import android.*;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.rumaan.academapp.R;
 import com.rumaan.academapp.databinding.FragmentProfileBinding;
 
 
@@ -31,6 +32,7 @@ public class ProfileFragment extends Fragment {
 
     private static final int REQUEST_CODE = 11;
     private static final int PERMISSION_REQUEST_CODE = 10;
+    private static final String TAG = "ProfileFragment";
     private TextView profileHeaderText;
     private CircularImageView profileAvatarImage;
 
@@ -50,8 +52,9 @@ public class ProfileFragment extends Fragment {
         // instantiate binding object
         fragmentProfileBinding = FragmentProfileBinding.inflate(inflater, container, false);
 
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return inflater.inflate(com.rumaan.academapp.R.layout.fragment_profile, container, false);
     }
 
     @Override
@@ -101,6 +104,9 @@ public class ProfileFragment extends Fragment {
             // check for permissions here
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 startActivityForResult(intent, REQUEST_CODE);
+            } else if (grantResults.length == 0) {
+                // this is probably useless
+                Log.e(TAG, "Results Entered Zero");
             }
         }
     }
@@ -108,6 +114,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK && data != null) {
                 Uri imageUri = data.getData();

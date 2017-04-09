@@ -1,4 +1,4 @@
-package com.rumaan.academapp;
+package com.rumaan.academapp.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
+import com.rumaan.academapp.R;
 
 
 /* Activity that handles the login interface for the application
