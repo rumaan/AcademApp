@@ -24,18 +24,15 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     // Android Support Library stuffs go here
     compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:support-v4:25.2.0'
+    compile 'com.android.support:support-v4:25.3.1'
     compile 'com.roughike:bottom-bar:2.1.1'
     compile 'com.mikhaellopez:circularimageview:3.0.2'
-    compile 'com.airbnb.android:lottie:1.5.2'
-
     // Firebase Stuffs go here
     compile 'com.firebaseui:firebase-ui-auth:1.2.0'
     compile 'com.google.firebase:firebase-core:10.2.0'
@@ -44,10 +41,9 @@ dependencies {
     compile 'com.google.firebase:firebase-database:10.2.0'
     compile 'com.google.firebase:firebase-storage:10.2.0'
     compile 'com.google.firebase:firebase-crash:10.2.0'
-
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support.constraint:constraint-layout:1.0.1'
-    compile 'com.android.support:cardview-v7:25.2.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:cardview-v7:25.3.1'
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
 }
 

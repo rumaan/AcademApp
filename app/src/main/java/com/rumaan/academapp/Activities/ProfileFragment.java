@@ -12,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,7 +52,6 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // instantiate binding object
         fragmentProfileBinding = FragmentProfileBinding.inflate(inflater, container, false);
-
 
         // Inflate the layout for this fragment
         return inflater.inflate(com.rumaan.academapp.R.layout.fragment_profile, container, false);
@@ -93,6 +93,7 @@ public class ProfileFragment extends Fragment {
                 // TODO: 19-Mar-17 show the larger image preview
                 Toast.makeText(view.getContext(), "Profile Image", Toast.LENGTH_SHORT).show();
                 return false;
+
             }
         });
     }
