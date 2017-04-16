@@ -1,4 +1,4 @@
-package com.rumaan.academapp.Activities;
+package com.rumaan.academapp.activities;
 
 import android.Manifest;
 import android.content.Intent;

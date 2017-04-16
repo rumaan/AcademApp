@@ -20,8 +20,13 @@
         <item name="android:windowBackground">@drawable/splash_page</item>
     </style>
 
-    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
-        <item name="android:background">@android:color/white</item>
+    <style name="NoFullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/Emerald_flat</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+
     </style>
 
     <style name="CondensedTextTheme" parent="Theme.AppCompat">

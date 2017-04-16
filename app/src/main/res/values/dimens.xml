@@ -7,4 +7,5 @@
     <dimen name="circular_meter_big_text">60sp</dimen>
     <dimen name="circulr_meter_medium_text">50sp</dimen>
     <dimen name="circular_meter_medium_header_text">16sp</dimen>
+    <dimen name="card_margin">8dp</dimen>
 </resources>

@@ -1,4 +1,4 @@
-package com.rumaan.academapp.Activities;
+package com.rumaan.academapp.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,12 +17,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
-import com.rumaan.academapp.Fragments.AcademicsFragment;
-import com.rumaan.academapp.Fragments.ForumFragment;
-import com.rumaan.academapp.Model.CustomFont;
+import com.rumaan.academapp.Manifest;
+import com.rumaan.academapp.fragments.AcademicsFragment;
+import com.rumaan.academapp.fragments.ForumFragment;
+import com.rumaan.academapp.model.CustomFont;
 import com.rumaan.academapp.R;
 import com.rumaan.academapp.databinding.ActivityHomeBinding;
 
+import uk.co.chrisjenx.calligraphy.BuildConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -53,9 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
 
 
-        /**
-         * Firebase Reference Stuffs go here
-         * */
+        /*
+          Firebase Reference Stuffs go here
+          */
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseRef = mFirebaseDatabase.getReference();
         mUsersRef = mDatabaseRef.child("users").getRef();
@@ -64,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         name = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
         email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
+
+        // set name and email values in Firebase Database
         setReferenceValues();
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()

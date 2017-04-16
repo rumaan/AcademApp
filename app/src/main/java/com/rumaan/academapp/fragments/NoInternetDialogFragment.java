@@ -1,4 +1,4 @@
-package com.rumaan.academapp.Fragments;
+package com.rumaan.academapp.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

@@ -1,4 +1,4 @@
-package com.rumaan.academapp.Model;
+package com.rumaan.academapp.model;
 
 import android.graphics.Bitmap;
 import android.net.Uri;

@@ -1,4 +1,4 @@
-package com.rumaan.academapp.Model;
+package com.rumaan.academapp.model;
 
 /**
  * Created by Rumaan on 19-Mar-17.
