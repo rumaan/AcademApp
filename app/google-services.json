@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "841721693962-ib1g17b3osa45v2s42h9mql6lagbf2nh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rumaan.academapp",
+            "certificate_hash": "69d4efdaeffa3950e80a9c7b594dca2d6b657134"
+          }
+        },
+        {
           "client_id": "841721693962-s9qh2tva2lsspkmgqgfekciqisjfqu84.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

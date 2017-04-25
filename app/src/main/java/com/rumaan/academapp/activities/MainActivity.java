@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.support.annotation.IdRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -20,10 +21,12 @@ import com.roughike.bottombar.OnTabSelectListener;
 import com.rumaan.academapp.Manifest;
 import com.rumaan.academapp.fragments.AcademicsFragment;
 import com.rumaan.academapp.fragments.ForumFragment;
+import com.rumaan.academapp.fragments.ProfileFragment;
 import com.rumaan.academapp.model.CustomFont;
 import com.rumaan.academapp.R;
 import com.rumaan.academapp.databinding.ActivityHomeBinding;
 
+import butterknife.BindView;
 import uk.co.chrisjenx.calligraphy.BuildConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -66,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         name = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
         email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
-
         // set name and email values in Firebase Database
         setReferenceValues();
 
@@ -89,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         // temp
-        startActivity(new Intent(this, UserDetailsActivity.class));
+      //  startActivity(new Intent(this, UserDetailsActivity.class));
     }
 
     /* Set the user name and email in Database */
@@ -131,7 +133,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     // set the navigation bar color
                     getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.Emerald_flat));
-
                 }
 
                 // replace with academ fragment
