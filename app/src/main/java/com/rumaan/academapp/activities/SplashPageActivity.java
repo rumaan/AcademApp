@@ -97,7 +97,10 @@ public class SplashPageActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthChanged: signed in");
-                    startActivity(new Intent(SplashPageActivity.this, MainActivity.class));
+
+                    // TODO: Start the next activity
+                    startActivity(new Intent(SplashPageActivity.this, UserDetailsActivity.class));
+                   // startActivity(new Intent(SplashPageActivity.this, MainActivity.class));
 
                     // get the uid
                     Toast.makeText(SplashPageActivity.this, FirebaseAuth.getInstance().getCurrentUser().getUid(), Toast.LENGTH_SHORT).show();

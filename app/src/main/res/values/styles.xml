@@ -36,10 +36,16 @@
         <item name="android:fontFamily">sans-serif-condensed</item>
     </style>
 
-
     <style name="ButtonStyle" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:colorControlHighlight">@color/Emerald_flat</item>
         <item name="android:padding">6dp</item>
+        <item name="android:colorButtonNormal">@color/Asphalt_grey</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAppearance">@style/TextAppearance.FontPath</item>
+    </style>
+    
+    <style name="TextAppearance.FontPath" parent="android:TextAppearance">
+        <item name="fontPath">fonts/medium.ttf</item>
     </style>
 
 </resources>

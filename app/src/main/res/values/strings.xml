@@ -9,6 +9,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="usn">USN</string>
+    <string name="provide_us_your_college_details">Provide us your college details for best possible experience.</string>
 
     <array name="college_names">
         <item>NITK Surathkal</item>

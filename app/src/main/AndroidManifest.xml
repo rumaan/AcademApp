@@ -25,7 +25,7 @@
         <activity android:name=".activities.MainActivity" />
         <activity
             android:name=".activities.LoginActivity"
-            android:theme="@style/SplashPageTheme"></activity>
+            android:theme="@style/SplashPageTheme"/>
         <activity
             android:name=".activities.UserDetailsActivity"
             android:theme="@style/NoFullScreenTheme" />

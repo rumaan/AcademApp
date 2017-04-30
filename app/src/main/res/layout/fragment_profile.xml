@@ -199,5 +199,19 @@
 
         </FrameLayout>
 
+        <Button
+            android:id="@+id/btn_log_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:theme="@style/ButtonStyle"
+            android:text="Log out"
+            android:textColor="@color/authui_inputTextColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_header"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0.23000002" />
+
     </android.support.constraint.ConstraintLayout>
 </layout>

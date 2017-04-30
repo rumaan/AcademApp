@@ -9,8 +9,13 @@ import android.os.Handler;
 import android.support.annotation.IdRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Scene;
+import android.transition.Slide;
+import android.transition.TransitionManager;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +32,7 @@ import com.rumaan.academapp.R;
 import com.rumaan.academapp.databinding.ActivityHomeBinding;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import uk.co.chrisjenx.calligraphy.BuildConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -57,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         /*
           Firebase Reference Stuffs go here
           */
@@ -77,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setFontAttrId(R.attr.fontPath)
                 .build());
 
-
         /* Using data binding */
         activityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
 
@@ -91,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         // temp
-      //  startActivity(new Intent(this, UserDetailsActivity.class));
+        //  startActivity(new Intent(this, UserDetailsActivity.class));
     }
 
     /* Set the user name and email in Database */
@@ -164,9 +168,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-        count++;
+        /*count++;
         if (count > 1) {
-            /* If count is greater than 1, quit */
+            *//* If count is greater than 1, quit *//*
             finishAffinity();
         } else {
             Toast.makeText(this, "Press back again to Leave!", Toast.LENGTH_SHORT).show();
@@ -179,6 +183,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     count = 0;
                 }
             }, 2000);
-        }
+        }*/
+        super.onBackPressed();
     }
 }
