@@ -13,6 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.rumaan.academapp.R;
 
 import java.util.regex.Pattern;
@@ -39,11 +42,12 @@ public class UserDetailsActivity extends AppCompatActivity {
     TextInputLayout usnTextInput;
     @BindView(R.id.college_name)
     TextInputLayout collegeNameInput;
-
     @BindView(R.id.course_spinner)
     Spinner courseSpinner;
     @BindView(R.id.year_spinner)
     Spinner yearSpinner;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mRef;
 
     @OnClick(R.id.btn_next)
     void onClick() {
@@ -63,7 +67,15 @@ public class UserDetailsActivity extends AppCompatActivity {
         collegeNameInput.setErrorEnabled(false);
         usnTextInput.setErrorEnabled(false);
         Toast.makeText(this, "All good!", Toast.LENGTH_SHORT).show();
+
+        updateFirebaseDatabase(collegeName, usn);
         //    startActivity(new Intent(this, MainActivity.class));
+    }
+
+    private void updateFirebaseDatabase(Editable collegeName, Editable usn) {
+        // set the values in Database
+        mRef.child("college_name").setValue(collegeName.toString());
+        mRef.child("usn").setValue(usn.toString());
     }
 
 
@@ -84,9 +96,12 @@ public class UserDetailsActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_user_details);
 
-
         ButterKnife.bind(this);
 
+
+        // set firebase stuffs
+        mDatabase = FirebaseDatabase.getInstance();
+        mRef = mDatabase.getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         ArrayAdapter coursesList = ArrayAdapter.createFromResource(this, R.array.courses_list, R.layout.spinner_item);
         ArrayAdapter yearList = ArrayAdapter.createFromResource(this, R.array.year_list, R.layout.spinner_item);
