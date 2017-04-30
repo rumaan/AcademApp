@@ -9,7 +9,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="usn">USN</string>
-    <string name="provide_us_your_college_details">Provide us your college details for best possible experience.</string>
+    <string name="provide_us_your_college_details">Provide us your college and academic details below.</string>
+    <string name="valid_usn_error">Please enter a valid USN.</string>
+    <string name="valid_college_name_error">Please enter a valid college name.</string>
 
     <array name="college_names">
         <item>NITK Surathkal</item>

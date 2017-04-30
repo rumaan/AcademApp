@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="courses_list">
+        <item>Computer Science</item>
+        <item>Electronics and Communication</item>
+        <item>Civil</item>
+        <item>Mechanical</item>
+    </string-array>
+</resources>

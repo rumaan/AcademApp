@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sem_list">
+        <item>I</item>
+        <item>II</item>
+        <item>III</item>
+    </string-array>
+</resources>

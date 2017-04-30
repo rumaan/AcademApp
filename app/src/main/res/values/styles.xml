@@ -41,11 +41,40 @@
         <item name="android:padding">6dp</item>
         <item name="android:colorButtonNormal">@color/Asphalt_grey</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textAppearance">@style/TextAppearance.FontPath</item>
+        <item name="android:textAppearance">@style/TextAppearance.FontPath.Medium</item>
     </style>
-    
-    <style name="TextAppearance.FontPath" parent="android:TextAppearance">
+
+    <style name="TextAppearance.FontPath.Medium" parent="android:TextAppearance">
         <item name="fontPath">fonts/medium.ttf</item>
     </style>
 
+    <style name="TextAppearance.FontPath.Regular" parent="android:TextAppearance">
+        <item name="fontPath">fonts/regular.ttf</item>
+    </style>
+
+    <style name="TextInputLayoutTheme" parent="Widget.Design.TextInputLayout">
+        <!-- Bottom line color state lists here -->
+        <item name="android:colorControlHighlight">@color/Asphalt_grey</item>
+        <item name="android:colorControlActivated">@color/Emerald_flat</item>
+        <item name="android:colorControlNormal">@color/Dark_green</item>
+
+        <!-- Text Appearance customized here -->
+        <item name="android:textColor">@color/Asphalt_grey</item>
+    </style>
+
+    <style name="TextInputLayoutTheme.HintAppearance" parent="TextAppearance.Design.Hint">
+        <!-- TextInputLayout hint text appearance here -->
+        <item name="android:textColor">@color/Emerald_flat</item>
+    </style>
+
+    <style name="TextInputLayoutTheme.ErrorAppearance" parent="TextAppearance.Design.Error">
+        <item name="android:textColor">@color/red_danger</item>
+        <item name="android:textAppearance">@style/TextAppearance.FontPath.Regular</item>
+    </style>
+
+    <style name="SpinnerStyle.Text" parent="Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:textColor">@color/Asphalt_grey</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>
