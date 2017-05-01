@@ -1,3 +1,3 @@
 # AcademApp
-Android Application for Institutes.. WIP..
-I'll be writing this later on.. currently BUSY.. <em>sorry</em>
+Android Application for Educational Institutes. App allows seamless login/sign-up using a valid Google account (College mail preferred). Students can login to check their academic details, college buzz, feeds etc. Faculty can update/upload upcoming events such as class material, test dates etc.
+App uses Firebase Database for storing/retrieval of data. FirebaseAuth for Authentication. Firebase Storage as a file storage mechanisim.

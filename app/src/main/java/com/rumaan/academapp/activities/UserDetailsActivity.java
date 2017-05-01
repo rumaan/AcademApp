@@ -1,5 +1,6 @@
 package com.rumaan.academapp.activities;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -48,6 +49,7 @@ public class UserDetailsActivity extends AppCompatActivity {
     Spinner yearSpinner;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
+
 
     @OnClick(R.id.btn_next)
     void onClick() {
