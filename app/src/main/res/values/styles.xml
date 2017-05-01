@@ -6,6 +6,7 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowContentTransitions">true</item>
         <item name="android:textColor">@color/Asphalt_grey</item>
         <item name="colorPrimary">@color/Emerald_flat</item>
         <item name="colorPrimaryDark">@color/green</item>

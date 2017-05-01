@@ -12,6 +12,7 @@
     <string name="provide_us_your_college_details">Please provide us your college and academic details below.</string>
     <string name="valid_usn_error">Please enter a valid USN.</string>
     <string name="valid_college_name_error">Please enter a valid college name.</string>
+    <string name="continue_btn_text">Continue</string>
 
     <array name="college_names">
         <item>NITK Surathkal</item>

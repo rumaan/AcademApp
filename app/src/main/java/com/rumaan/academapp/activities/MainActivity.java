@@ -1,39 +1,26 @@
 package com.rumaan.academapp.activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.IdRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.Scene;
-import android.transition.Slide;
-import android.transition.TransitionManager;
-import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
-import com.rumaan.academapp.Manifest;
+import com.rumaan.academapp.R;
+import com.rumaan.academapp.databinding.ActivityHomeBinding;
 import com.rumaan.academapp.fragments.AcademicsFragment;
 import com.rumaan.academapp.fragments.ForumFragment;
 import com.rumaan.academapp.fragments.ProfileFragment;
 import com.rumaan.academapp.model.CustomFont;
-import com.rumaan.academapp.R;
-import com.rumaan.academapp.databinding.ActivityHomeBinding;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import uk.co.chrisjenx.calligraphy.BuildConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -62,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         /*
           Firebase Reference Stuffs go here
