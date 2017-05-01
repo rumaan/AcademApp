@@ -1,6 +1,5 @@
 package com.rumaan.academapp.activities;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -37,6 +36,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class UserDetailsActivity extends AppCompatActivity {
 
+    private static final String USER_REF_STRING = "users";
     @BindView(R.id.root_view)
     LinearLayout rootView;
     @BindView(R.id.usn)
@@ -47,21 +47,19 @@ public class UserDetailsActivity extends AppCompatActivity {
     Spinner courseSpinner;
     @BindView(R.id.year_spinner)
     Spinner yearSpinner;
-    private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
-
 
     @OnClick(R.id.btn_next)
     void onClick() {
         // Validate the fields before going to next activity
         Editable collegeName = collegeNameInput.getEditText().getText();
         Editable usn = usnTextInput.getEditText().getText();
-        if (TextUtils.isEmpty(collegeName)) {
+        if (TextUtils.isEmpty(collegeName) || isCollegeNameValid(collegeName)) {
             collegeNameInput.setErrorEnabled(true);
             collegeNameInput.setError(getString(R.string.valid_college_name_error));
             return;
         }
-        if (TextUtils.isEmpty(usn)) {
+        if (TextUtils.isEmpty(usn) || isUsnValid(usn) || usn.length() != 10) {
             usnTextInput.setErrorEnabled(true);
             usnTextInput.setError(getString(R.string.valid_usn_error));
             return;
@@ -70,14 +68,17 @@ public class UserDetailsActivity extends AppCompatActivity {
         usnTextInput.setErrorEnabled(false);
         Toast.makeText(this, "All good!", Toast.LENGTH_SHORT).show();
 
-        updateFirebaseDatabase(collegeName, usn);
+        // update the values in the database
+        updateFirebaseDatabase(collegeName, usn, yearSpinner.getSelectedItem().toString(), courseSpinner.getSelectedItem().toString());
         //    startActivity(new Intent(this, MainActivity.class));
     }
 
-    private void updateFirebaseDatabase(Editable collegeName, Editable usn) {
+    private void updateFirebaseDatabase(Editable collegeName, Editable usn, String year, String course) {
         // set the values in Database
         mRef.child("college_name").setValue(collegeName.toString());
         mRef.child("usn").setValue(usn.toString());
+        mRef.child("year").setValue(year);
+        mRef.child("course").setValue(course);
     }
 
 
@@ -100,10 +101,9 @@ public class UserDetailsActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-
         // set firebase stuffs
-        mDatabase = FirebaseDatabase.getInstance();
-        mRef = mDatabase.getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+        mRef = FirebaseDatabase.getInstance().getReference(USER_REF_STRING).child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         ArrayAdapter coursesList = ArrayAdapter.createFromResource(this, R.array.courses_list, R.layout.spinner_item);
         ArrayAdapter yearList = ArrayAdapter.createFromResource(this, R.array.year_list, R.layout.spinner_item);
