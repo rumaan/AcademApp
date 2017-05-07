@@ -14,6 +14,8 @@
     <string name="valid_college_name_error">Please enter a valid college name.</string>
     <string name="continue_btn_text">Continue</string>
 
+    <string name="shared_transition_img">Shared Transition Name</string>
+
     <array name="college_names">
         <item>NITK Surathkal</item>
         <item>St. Joseph\'s College of Engineering</item>

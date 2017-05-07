@@ -11,4 +11,6 @@
     <dimen name="edit_text_size">20sp</dimen>
     <dimen name="card_view_content_padding">4dp</dimen>
     <dimen name="card_view_content_margin">4dp</dimen>
+    <dimen name="material_in_anim_slide_offset">16dp</dimen>
+    <dimen name="material_in_delay_denominator">1.35dp</dimen>
 </resources>

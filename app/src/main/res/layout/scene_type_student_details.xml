@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/Emerald_flat"
+                android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/student"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="24dp"
+        android:alpha="0.9"
+        android:src="@drawable/ic_student"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/student"
+        android:layout_centerHorizontal="true"
+        android:text="Student"
+        android:textAppearance="@style/TextAppearance.FontPath.Medium"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"/>
+
+</RelativeLayout>

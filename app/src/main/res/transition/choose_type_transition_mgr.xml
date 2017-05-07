@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionManager xmlns:android="http://schemas.android.com/apk/res/android">
+    <transition
+        android:fromScene="@layout/activity_choose_type"
+        android:toScene="@layout/scene_type_student_details"
+        android:transition="@transition/change_bounds_fade_in"/>
+
+</transitionManager>
