@@ -1,13 +1,14 @@
 package com.rumaan.academapp.activities;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.IdRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -15,22 +16,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 import com.rumaan.academapp.R;
-import com.rumaan.academapp.databinding.ActivityHomeBinding;
 import com.rumaan.academapp.fragments.AcademicsFragment;
 import com.rumaan.academapp.fragments.ForumFragment;
 import com.rumaan.academapp.fragments.ProfileFragment;
 import com.rumaan.academapp.model.CustomFont;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnTabSelectListener {
-
-    /* Data binding object */
-    ActivityHomeBinding activityHomeBinding;
-
-    /* Bottom bar object */
-    private BottomBar bottomBar;
+    @BindView(R.id.bottom_bar)
+    BottomBar bottomBar;
 
     /* For back button */
     private int count = 0;
@@ -49,8 +47,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
 
-
+        ButterKnife.bind(this);
         /*
           Firebase Reference Stuffs go here
           */
@@ -69,21 +68,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setDefaultFontPath("fonts/regular.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build());
-
-        /* Using data binding */
-        activityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
-
-        bottomBar = activityHomeBinding.bottomBar;
-
         /* hook up listeners */
         bottomBar.setOnTabSelectListener(this);
 
         /* Get the custom typeface */
         bottomBar.setTabTitleTypeface(CustomFont.getInstance(getApplicationContext()).getTypeFace(CustomFont.Regular));
-
-
-        // temp
-        //  startActivity(new Intent(this, UserDetailsActivity.class));
     }
 
     /* Set the user name and email in Database */
@@ -95,7 +84,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         // do something on click, wait click what?
-
     }
 
     @Override
@@ -113,9 +101,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(activityHomeBinding.rootView.getId(), forumFragment)
+                        .replace(R.id.root_view, forumFragment)
                         .commit();
-
 
                 break;
             case R.id.academics_tab_item:
@@ -131,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 AcademicsFragment academicsFragment = new AcademicsFragment();
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(activityHomeBinding.rootView.getId(), academicsFragment)
+                        .replace(R.id.root_view, academicsFragment)
                         .commit();
 
                 break;
@@ -143,11 +130,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     // set the navigation bar color
                     getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.Asphalt_grey));
                 }
+
+
                 // u get the point.
                 ProfileFragment profileFragment = new ProfileFragment();
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(activityHomeBinding.rootView.getId(), profileFragment)
+                        .replace(R.id.root_view, profileFragment)
                         .commit();
 
                 break;
@@ -156,9 +145,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-        /*count++;
+        count++;
         if (count > 1) {
-            *//* If count is greater than 1, quit *//*
+            /* If count is greater than 1, quit */
             finishAffinity();
         } else {
             Toast.makeText(this, "Press back again to Leave!", Toast.LENGTH_SHORT).show();
@@ -171,7 +160,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     count = 0;
                 }
             }, 2000);
-        }*/
+        }
         super.onBackPressed();
     }
+
 }

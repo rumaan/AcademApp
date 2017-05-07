@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.rumaan.academapp.R;
+import com.rumaan.academapp.model.Constants;
 
 import java.util.regex.Pattern;
 
@@ -46,7 +47,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class UserDetailsActivity extends AppCompatActivity {
 
-    private static final String USER_REF_STRING = "users";
+
     @BindView(R.id.root_view)
     LinearLayout rootView;
     @BindView(R.id.usn)
@@ -98,6 +99,7 @@ public class UserDetailsActivity extends AppCompatActivity {
             startActivity(new Intent(this, MainActivity.class));
         } else animateButton();
     }
+
 
     private void animateButton() {
 
@@ -164,7 +166,7 @@ public class UserDetailsActivity extends AppCompatActivity {
 
 
         // set firebase stuffs
-        mRef = FirebaseDatabase.getInstance().getReference(USER_REF_STRING).child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        mRef = FirebaseDatabase.getInstance().getReference(Constants.USER_REF_STRING).child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         ArrayAdapter coursesList = ArrayAdapter.createFromResource(this, R.array.courses_list, R.layout.spinner_item);
         ArrayAdapter yearList = ArrayAdapter.createFromResource(this, R.array.year_list, R.layout.spinner_item);

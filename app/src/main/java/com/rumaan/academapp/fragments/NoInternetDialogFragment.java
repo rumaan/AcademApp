@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
 /**
- * Created by Rumaan on 05-Apr-17.
+ * Displays a Fragment window with no internet connection message dialog
  */
 
 public class NoInternetDialogFragment extends DialogFragment {

@@ -4,12 +4,9 @@ package com.rumaan.academapp.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.transition.Scene;
-import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,14 +30,13 @@ public class ProfileFragment extends Fragment {
     TextView emailText;
     @BindView(R.id.profile_avatar)
     CircularImageView circularImageView;
-    @BindView(R.id.btn_log_out)
-    Button logOutButton;
-
     private FirebaseUser firebaseUser;
+
 
     public ProfileFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
