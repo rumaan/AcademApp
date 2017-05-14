@@ -24,6 +24,9 @@
     <style name="NoFullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:statusBarColor">@color/Emerald_flat</item>
         <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowExitTransition">@transition/slide_transtion</item>
+        <item name="android:windowAllowEnterTransitionOverlap">false</item>
     </style>
 
     <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">

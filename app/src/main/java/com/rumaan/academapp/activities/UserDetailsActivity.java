@@ -47,7 +47,6 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class UserDetailsActivity extends AppCompatActivity {
 
-
     @BindView(R.id.root_view)
     LinearLayout rootView;
     @BindView(R.id.usn)
@@ -72,7 +71,6 @@ public class UserDetailsActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_next)
     void onClick(View view) {
-
         // Validate the fields before going to next activity
         Editable collegeName = collegeNameInput.getEditText().getText();
         Editable usn = usnTextInput.getEditText().getText();
@@ -86,23 +84,27 @@ public class UserDetailsActivity extends AppCompatActivity {
             usnTextInput.setError(getString(R.string.valid_usn_error));
             return;
         }
+
+        // reset the error for EditText
         collegeNameInput.setErrorEnabled(false);
         usnTextInput.setErrorEnabled(false);
-        //     Toast.makeText(this, "All good!", Toast.LENGTH_SHORT).show();
 
         // update the values in the database
-        updateFirebaseDatabase(collegeName, usn, yearSpinner.getSelectedItem().toString(), courseSpinner.getSelectedItem().toString());
+        updateFirebaseDatabase(collegeName,
+                usn,
+                yearSpinner.getSelectedItem().toString(),
+                courseSpinner.getSelectedItem().toString()
+        );
 
-        //if (count != 1) {
+        // if (count != 1) {
         if (count == 1) {
             finish();
             startActivity(new Intent(this, MainActivity.class));
         } else animateButton();
     }
 
-
+    /* Animates the Next Button */
     private void animateButton() {
-
         /* Circular reveal the button */
         int startRadius = 0;
         int finalRadius = Math.max(maskView.getHeight(), maskView.getWidth());
@@ -134,6 +136,7 @@ public class UserDetailsActivity extends AppCompatActivity {
         animatorSet.playTogether(rotationAnimator, translateXInterpolator);
         animatorSet.start();
 
+        // for second time
         count++;
     }
 
@@ -217,7 +220,9 @@ public class UserDetailsActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         });
+
     }
+
 
     boolean isCollegeNameValid(CharSequence s) {
         // TODO: Check for more invalid characters

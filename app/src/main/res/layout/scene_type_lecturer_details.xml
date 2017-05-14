@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
-        android:text="I am a Student"
+        android:text="I am a Lecturer"
         android:textAppearance="@style/TextAppearance.FontPath.Medium"
         android:textColor="@color/tw__solid_white"
         android:textSize="24sp"
@@ -23,44 +23,41 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1"/>
 
+
     <ImageView
-        android:id="@+id/student"
+        android:id="@+id/lecturer"
         android:layout_width="0dp"
         android:layout_height="180dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="101dp"
-        android:adjustViewBounds="false"
-        android:alpha="0.9"
-        android:cropToPadding="false"
-        android:src="@drawable/ic_student"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:alpha="1"
+        android:src="@drawable/ic_classroom"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"/>
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1"/>
 
     <View
-        android:id="@+id/view2"
         android:layout_width="0dp"
         android:layout_height="1dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:alpha="0.7"
         android:background="@android:color/white"
+        android:elevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="@+id/student"
-        app:layout_constraintRight_toRightOf="@+id/student"
-        app:layout_constraintTop_toBottomOf="@+id/student"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lecturer"
+        app:layout_constraintVertical_bias="0.204"/>
 
     <Button
         android:id="@+id/btn_next"
@@ -68,8 +65,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/btn_next"
         android:text="next"
@@ -78,58 +73,57 @@
         android:textColor="@drawable/btn_next_text"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"/>
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imageView2"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="67dp"
+        android:layout_marginBottom="105dp"
         android:alpha="0.9"
+        app:layout_constraintBottom_toTopOf="@+id/btn_next"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
-        app:srcCompat="@drawable/ic_classroom"/>
+        app:srcCompat="@drawable/ic_student"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"/>
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Lecturer"
+        android:layout_marginTop="12dp"
+        android:text="Student"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/btn_next"
-        app:layout_constraintHorizontal_bias="0.181"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView6"
-        app:layout_constraintRight_toRightOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="0.069"/>
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView2"
+        app:layout_constraintRight_toRightOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"/>
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="Not Sure yet?"
+        android:text="Not Sure Yet?"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.FontPath.Medium"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/btn_next"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintVertical_bias="0.585"/>
 
 
 </android.support.constraint.ConstraintLayout>
