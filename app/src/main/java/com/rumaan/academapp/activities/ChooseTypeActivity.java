@@ -29,7 +29,6 @@ public class ChooseTypeActivity extends AppCompatActivity {
     private TransitionSet mTransitionSet;
     private Scene mStudentScene, mLecturerScene, mDefaultScene;
 
-
     @OnLongClick({R.id.student, R.id.lecturer})
     boolean onLongClick(ImageView imageView) {
         switch (imageView.getId()) {
@@ -59,10 +58,12 @@ public class ChooseTypeActivity extends AppCompatActivity {
         }
     }
 
+    // change the scene to Student Select Scene
     private void createStudentScene() {
         TransitionManager.go(mStudentScene);
     }
 
+    // change the scene to Lecturer Select Scene
     private void createLecturerScene() {
         TransitionManager.go(mLecturerScene);
     }
@@ -79,12 +80,10 @@ public class ChooseTypeActivity extends AppCompatActivity {
                 .setDefaultFontPath("fonts/regular.ttf")
                 .build());
 
-
         // set up scenes
         mDefaultScene = Scene.getSceneForLayout(rootView, R.layout.activity_choose_type, this);
         mLecturerScene = Scene.getSceneForLayout(rootView, R.layout.scene_type_lecturer_details, this);
         mStudentScene = Scene.getSceneForLayout(rootView, R.layout.scene_type_student_details, this);
-
 
     }
 

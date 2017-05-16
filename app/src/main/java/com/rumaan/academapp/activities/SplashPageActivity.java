@@ -127,7 +127,6 @@ public class SplashPageActivity extends AppCompatActivity {
                                         )
                         );
                     }
-
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthChanged: signed out");
@@ -167,10 +166,7 @@ public class SplashPageActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
-
-
         });
         return dataSet;
     }

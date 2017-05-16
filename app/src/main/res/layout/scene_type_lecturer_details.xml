@@ -52,7 +52,7 @@
         android:alpha="0.7"
         android:background="@android:color/white"
         android:elevation="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintBottom_toTopOf="@+id/student"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -80,7 +80,7 @@
         tools:layout_constraintRight_creator="1"/>
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/student"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginBottom="105dp"
@@ -103,9 +103,9 @@
         android:textAlignment="center"
         android:textColor="@android:color/white"
         app:layout_constraintHorizontal_bias="0.514"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView2"
-        app:layout_constraintRight_toRightOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintLeft_toLeftOf="@+id/student"
+        app:layout_constraintRight_toRightOf="@+id/student"
+        app:layout_constraintTop_toBottomOf="@+id/student"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintTop_creator="1"/>
 

@@ -83,7 +83,7 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/lecturer"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginEnd="8dp"
@@ -110,9 +110,9 @@
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/btn_next"
         app:layout_constraintHorizontal_bias="0.181"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView6"
-        app:layout_constraintRight_toRightOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintLeft_toLeftOf="@+id/lecturer"
+        app:layout_constraintRight_toRightOf="@+id/lecturer"
+        app:layout_constraintTop_toBottomOf="@+id/lecturer"
         app:layout_constraintVertical_bias="0.069"/>
 
     <TextView

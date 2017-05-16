@@ -46,7 +46,6 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  */
 
 public class UserDetailsActivity extends AppCompatActivity {
-
     @BindView(R.id.root_view)
     LinearLayout rootView;
     @BindView(R.id.usn)
@@ -117,7 +116,7 @@ public class UserDetailsActivity extends AppCompatActivity {
         anim.setDuration(800);
         anim.start();
 
-        // set the button text
+        // set the button text2+
         buttonText.setText(R.string.continue_btn_text);
 
         /* Animate the check image */
@@ -167,7 +166,6 @@ public class UserDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_details);
         ButterKnife.bind(this);
 
-
         // set firebase stuffs
         mRef = FirebaseDatabase.getInstance().getReference(Constants.USER_REF_STRING).child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
@@ -199,7 +197,6 @@ public class UserDetailsActivity extends AppCompatActivity {
             }
         });
 
-
         usnTextInput.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -223,7 +220,6 @@ public class UserDetailsActivity extends AppCompatActivity {
 
     }
 
-
     boolean isCollegeNameValid(CharSequence s) {
         // TODO: Check for more invalid characters
         return !Pattern.matches("^(a-z|A-Z|0-9)*[^#$%^&*()/+_-]*$", s.toString());
@@ -232,7 +228,6 @@ public class UserDetailsActivity extends AppCompatActivity {
     boolean isUsnValid(CharSequence s) {
         // TODO: create regExp particular to USN
         return !Pattern.matches("^(a-z|A-Z|0-9)*[^#$%^&*()' /+_-]*$", s.toString());
-
     }
 
     @Override

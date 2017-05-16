@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.Emerald_flat));
                 }
 
-                // replace with academ fragment
+                // replace with academic fragment
                 AcademicsFragment academicsFragment = new AcademicsFragment();
                 getSupportFragmentManager()
                         .beginTransaction()
