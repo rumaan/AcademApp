@@ -54,7 +54,8 @@
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_marginEnd="@dimen/check_margin"
             android:layout_marginStart="@dimen/check_margin"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -87,7 +88,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="1.2dp"
+                android:layout_width="1dp"
                 android:layout_height="170dp"
                 android:layout_gravity="center"
                 android:alpha="0.7"

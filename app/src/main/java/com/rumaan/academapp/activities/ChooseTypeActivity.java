@@ -3,6 +3,7 @@ package com.rumaan.academapp.activities;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -50,8 +51,11 @@ public class ChooseTypeActivity extends AppCompatActivity {
     void onClick(ImageView imageView) {
         switch (imageView.getId()) {
             case R.id.student:
+
                 if (studentTickImage.getVisibility() != View.VISIBLE) {
                     studentTickImage.setVisibility(View.VISIBLE);
+                    MaterialIn.animate(studentTickImage, Gravity.TOP, Gravity.TOP);
+
                     lecturerTickImage.setVisibility(View.INVISIBLE);
                 }
                 break;
@@ -59,7 +63,9 @@ public class ChooseTypeActivity extends AppCompatActivity {
                 // chosen lecturer
                 if (lecturerTickImage.getVisibility() != View.VISIBLE) {
                     studentTickImage.setVisibility(View.INVISIBLE);
+
                     lecturerTickImage.setVisibility(View.VISIBLE);
+                    MaterialIn.animate(lecturerTickImage, Gravity.TOP, Gravity.TOP);
                 }
                 break;
         }
