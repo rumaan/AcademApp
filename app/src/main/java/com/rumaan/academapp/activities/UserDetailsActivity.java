@@ -46,6 +46,9 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  */
 
 public class UserDetailsActivity extends AppCompatActivity {
+    public static final String BUNDLE_KEY = "Type";
+    public static final String INTENT_KEY = "key";
+
     @BindView(R.id.root_view)
     LinearLayout rootView;
     @BindView(R.id.usn)
@@ -64,11 +67,10 @@ public class UserDetailsActivity extends AppCompatActivity {
     TextView buttonText;
     @BindView(R.id.img_check)
     ImageView checkImage;
-
     private int count = 0;
     private DatabaseReference mRef;
 
-    @OnClick(R.id.btn_next)
+    @OnClick(R.id.btn_next_lecturer)
     void onClick(View view) {
         // Validate the fields before going to next activity
         Editable collegeName = collegeNameInput.getEditText().getText();
@@ -147,6 +149,10 @@ public class UserDetailsActivity extends AppCompatActivity {
         mRef.child("course").setValue(course);
     }
 
+    private void updateFirebaseDatabase(int type) {
+        mRef.child("type").setValue(type);
+    }
+
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -156,6 +162,16 @@ public class UserDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // get extras
+        Bundle b = getIntent().getBundleExtra(BUNDLE_KEY);
+        if (b != null) {
+            int type = getIntent().getIntExtra(INTENT_KEY, -1);
+            if (type != -1) {
+                // update the type variable in the database
+                updateFirebaseDatabase(type);
+            }
+        }
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/regular.ttf")

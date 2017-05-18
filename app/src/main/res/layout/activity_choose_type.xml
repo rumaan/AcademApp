@@ -1,89 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/Emerald_flat"
-    tools:context="com.rumaan.academapp.activities.ChooseTypeActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/Emerald_flat"
+              android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/header_text_who"
-        fontPath="fonts/medium.ttf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:text="Who are you?"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="28sp"
-        tools:ignore="MissingPrefix"/>
-
-    <TextView
-        android:id="@+id/desc_choose_type"
-        fontPath="fonts/regular.ttf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/choose_view"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:alpha="0.9"
-        android:text="Please choose the type of user mentioned below."
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        tools:ignore="MissingPrefix"/>
-
-    <LinearLayout
-        android:id="@+id/choose_view"
+    <RelativeLayout
+        android:id="@+id/root_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"
-        android:layout_marginEnd="25dp"
-        android:layout_marginStart="25dp"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        tools:context="com.rumaan.academapp.activities.ChooseTypeActivity">
 
-        <ImageView
-            android:id="@+id/student"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
+        <TextView
+            android:id="@+id/header_text_who"
+            fontPath="fonts/medium.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="24dp"
+            android:text="Who are you?"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"
+            tools:ignore="MissingPrefix"/>
+
+        <TextView
+            android:id="@+id/desc_choose_type"
+            fontPath="fonts/regular.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/choose_view"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
             android:alpha="0.9"
-            android:background="@drawable/ripple_white"
-            android:clickable="true"
-            android:padding="24dp"
-            android:src="@drawable/ic_student"
-            android:transitionName="@string/shared_transition_img"
-            />
+            android:text="Please choose the type of user mentioned below."
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            tools:ignore="MissingPrefix"/>
 
-        <View
-            android:layout_width="1.2dp"
-            android:layout_height="170dp"
-            android:layout_gravity="center"
-            android:alpha="0.7"
-            android:background="@android:color/white"/>
+        <LinearLayout
+            android:id="@+id/choose_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/check_margin"
+            android:layout_marginStart="@dimen/check_margin"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/lecturer"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:alpha="0.9"
-            android:background="@drawable/ripple_white"
-            android:clickable="true"
-            android:padding="24dp"
-            android:src="@drawable/ic_classroom"
-            android:transitionName="@string/shared_transition_img"
-            />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-</RelativeLayout>
+                <ImageView
+                    android:id="@+id/student"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="7"
+                    android:alpha="0.9"
+                    android:background="@drawable/ripple_white"
+                    android:clickable="true"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_student"
+                    android:transitionName="@string/shared_transition_img"
+                    />
+
+                <ImageView
+                    android:id="@+id/student_tick"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:src="@drawable/check_mark_vector"
+                    android:visibility="invisible"
+                    tools:visibility="visible"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="1.2dp"
+                android:layout_height="170dp"
+                android:layout_gravity="center"
+                android:alpha="0.7"
+                android:background="@android:color/white"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/lecturer"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="7"
+                    android:alpha="0.9"
+                    android:background="@drawable/ripple_white"
+                    android:clickable="true"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_classroom"
+                    android:transitionName="@string/shared_transition_img"
+                    />
+
+                <ImageView
+                    android:id="@+id/lecturer_tick"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:src="@drawable/check_mark_vector"
+                    android:visibility="invisible"
+                    tools:visibility="visible"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="I am Student"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/Asphalt_grey"/>
+</LinearLayout>
+
+

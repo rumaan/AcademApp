@@ -60,7 +60,7 @@
         app:layout_constraintVertical_bias="0.204"/>
 
     <Button
-        android:id="@+id/btn_next"
+        android:id="@+id/btn_next_lecturer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
@@ -71,7 +71,7 @@
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.FontPath.Medium"
         android:textColor="@drawable/btn_next_text"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -85,7 +85,7 @@
         android:layout_height="55dp"
         android:layout_marginBottom="105dp"
         android:alpha="0.9"
-        app:layout_constraintBottom_toTopOf="@+id/btn_next"
+        app:layout_constraintBottom_toTopOf="@+id/btn_next_lecturer"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -119,7 +119,7 @@
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.FontPath.Medium"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/btn_next"
+        app:layout_constraintBottom_toTopOf="@+id/btn_next_lecturer"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10"

@@ -3,9 +3,7 @@ package com.rumaan.academapp.activities;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.Scene;
-import android.transition.TransitionManager;
-import android.transition.TransitionSet;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -25,9 +23,15 @@ public class ChooseTypeActivity extends AppCompatActivity {
     ViewGroup rootView;
     @BindView(R.id.choose_view)
     ViewGroup rootViewContainer;
-
-    private TransitionSet mTransitionSet;
-    private Scene mStudentScene, mLecturerScene, mDefaultScene;
+    @BindView(R.id.student)
+    ImageView studentImg;
+    @BindView(R.id.lecturer)
+    ImageView lecturerImg;
+    @BindView(R.id.student_tick)
+    ImageView studentTickImage;
+    @BindView(R.id.lecturer_tick)
+    ImageView lecturerTickImage;
+    private boolean choosen = true;
 
     @OnLongClick({R.id.student, R.id.lecturer})
     boolean onLongClick(ImageView imageView) {
@@ -46,26 +50,23 @@ public class ChooseTypeActivity extends AppCompatActivity {
     void onClick(ImageView imageView) {
         switch (imageView.getId()) {
             case R.id.student:
-                // chosen student
-                // change scene to student details
-                createStudentScene();
+                if (studentTickImage.getVisibility() != View.VISIBLE) {
+                    studentTickImage.setVisibility(View.VISIBLE);
+                    lecturerTickImage.setVisibility(View.INVISIBLE);
+                }
                 break;
             case R.id.lecturer:
                 // chosen lecturer
-                // change scene to lecturer details
-                createLecturerScene();
+                if (lecturerTickImage.getVisibility() != View.VISIBLE) {
+                    studentTickImage.setVisibility(View.INVISIBLE);
+                    lecturerTickImage.setVisibility(View.VISIBLE);
+                }
                 break;
         }
     }
 
-    // change the scene to Student Select Scene
-    private void createStudentScene() {
-        TransitionManager.go(mStudentScene);
-    }
-
-    // change the scene to Lecturer Select Scene
-    private void createLecturerScene() {
-        TransitionManager.go(mLecturerScene);
+    private void alterTypeTick() {
+        choosen = !choosen;
     }
 
     @Override
@@ -79,22 +80,12 @@ public class ChooseTypeActivity extends AppCompatActivity {
                 .setFontAttrId(R.attr.fontPath)
                 .setDefaultFontPath("fonts/regular.ttf")
                 .build());
-
-        // set up scenes
-        mDefaultScene = Scene.getSceneForLayout(rootView, R.layout.activity_choose_type, this);
-        mLecturerScene = Scene.getSceneForLayout(rootView, R.layout.scene_type_lecturer_details, this);
-        mStudentScene = Scene.getSceneForLayout(rootView, R.layout.scene_type_student_details, this);
-
     }
 
     @Override
     public void onBackPressed() {
-        if (getContentScene() == mDefaultScene) {
-            this.finishAffinity();
-        } else {
-            getContentScene().exit();
-            TransitionManager.go(mDefaultScene);
-        }
+        // kill everything
+        this.finishAffinity();
     }
 
     @Override
