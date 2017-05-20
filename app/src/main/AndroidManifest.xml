@@ -28,9 +28,11 @@
             android:theme="@style/SplashPageTheme"/>
         <activity
             android:name=".activities.UserDetailsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/NoFullScreenTheme"/>
         <activity
             android:name=".activities.ChooseTypeActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/NoFullScreenTheme">
         </activity>
     </application>

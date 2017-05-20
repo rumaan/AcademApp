@@ -5,8 +5,6 @@
     <string name="forum">Forum</string>
     <string name="academics">Academics</string>
     <string name="about_me">About Me</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="usn">USN</string>
     <string name="provide_us_your_college_details">Please provide us your college and academic details below.</string>
@@ -15,6 +13,7 @@
     <string name="continue_btn_text">Continue</string>
 
     <string name="shared_transition_img">Shared Transition Name</string>
+    <string name="network_error">Network Connectivity Issues!\nPlease try again later.</string>
 
     <array name="college_names">
         <item>NITK Surathkal</item>

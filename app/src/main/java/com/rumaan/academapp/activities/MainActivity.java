@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBackPressed() {
         count++;
-        if (count > 1) {
+        if (count >= 1) {
             /* If count is greater than 1, quit */
             finishAffinity();
         } else {

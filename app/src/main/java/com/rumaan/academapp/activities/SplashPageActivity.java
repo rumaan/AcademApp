@@ -111,22 +111,17 @@ public class SplashPageActivity extends AppCompatActivity {
                     Log.d(TAG, "onAuthChanged: signed in");
                     Log.i(TAG, "UID : " + firebaseUser.getUid());
 
-                    // check whether all fields for current user in the database aren't empty
-                    if (isAllDataAvailable()) {
-                        // goto main activity
-                        startActivity(new Intent(SplashPageActivity.this, MainActivity.class));
-                    } else {
-                        // goto corresponding missing activity
-                        startActivity(new Intent(SplashPageActivity.this, ChooseTypeActivity.class));
-                        getWindow().setExitTransition(
-                                new Slide(
-                                        Gravity.BOTTOM)
-                                        .setDuration(300)
-                                        .setInterpolator(
-                                                new FastOutSlowInInterpolator()
-                                        )
-                        );
-                    }
+                    // goto corresponding missing activity
+                    startActivity(new Intent(SplashPageActivity.this, ChooseTypeActivity.class));
+                    getWindow().setExitTransition(
+                            new Slide(
+                                    Gravity.BOTTOM)
+                                    .setDuration(300)
+                                    .setInterpolator(
+                                            new FastOutSlowInInterpolator()
+                                    )
+                    );
+
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthChanged: signed out");
@@ -166,6 +161,7 @@ public class SplashPageActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(SplashPageActivity.this, getString(R.string.network_error), Toast.LENGTH_SHORT).show();
             }
         });
         return dataSet;
@@ -198,10 +194,11 @@ public class SplashPageActivity extends AppCompatActivity {
             IdpResponse idpResponse = IdpResponse.fromResultIntent(data);
 
             if (resultCode == RESULT_OK) {
-                // successfully signed in
-                startActivity(new Intent(SplashPageActivity.this, MainActivity.class));
-                finish();
-                return;
+                // check whether all fields for current user in the database aren't empty
+                if (isAllDataAvailable()) {
+                    // goto main activity
+                    startActivity(new Intent(SplashPageActivity.this, MainActivity.class));
+                }
             } else {
                 if (idpResponse == null) {
                     // user pressed back button
