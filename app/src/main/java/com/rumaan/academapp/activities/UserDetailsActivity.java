@@ -10,9 +10,11 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.DecelerateInterpolator;
@@ -27,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.rumaan.academapp.R;
 import com.rumaan.academapp.model.Constants;
+import com.rumaan.academapp.model.MaterialIn;
 
 import java.util.regex.Pattern;
 
@@ -49,6 +52,8 @@ public class UserDetailsActivity extends AppCompatActivity {
     public static final String BUNDLE_KEY = "Type";
     public static final String INTENT_KEY = "key";
 
+    private static final String TAG = "UserDetailsActivity";
+
     @BindView(R.id.root_view)
     LinearLayout rootView;
     @BindView(R.id.usn)
@@ -67,10 +72,13 @@ public class UserDetailsActivity extends AppCompatActivity {
     TextView buttonText;
     @BindView(R.id.img_check)
     ImageView checkImage;
+    @BindView(R.id.card_details)
+    CardView cardDetails;
     private int count = 0;
-    private DatabaseReference mRef;
+    private DatabaseReference collegeDetailsRef;
+    private int type;
 
-    @OnClick(R.id.btn_next_lecturer)
+    @OnClick(R.id.btn_next)
     void onClick(View view) {
         // Validate the fields before going to next activity
         Editable collegeName = collegeNameInput.getEditText().getText();
@@ -91,15 +99,16 @@ public class UserDetailsActivity extends AppCompatActivity {
         usnTextInput.setErrorEnabled(false);
 
         // update the values in the database
+        updateFirebaseDatabase(type);
         updateFirebaseDatabase(collegeName,
                 usn,
                 yearSpinner.getSelectedItem().toString(),
                 courseSpinner.getSelectedItem().toString()
         );
 
-        // if (count != 1) {
+        // TODO: check for changes after the button click
+        // change the next button to continue and increment counter
         if (count == 1) {
-            finish();
             startActivity(new Intent(this, MainActivity.class));
         } else animateButton();
     }
@@ -143,14 +152,16 @@ public class UserDetailsActivity extends AppCompatActivity {
 
     private void updateFirebaseDatabase(Editable collegeName, Editable usn, String year, String course) {
         // set the values in Database
-        mRef.child("college_name").setValue(collegeName.toString());
-        mRef.child("usn").setValue(usn.toString());
-        mRef.child("year").setValue(year);
-        mRef.child("course").setValue(course);
+        // set firebase stuffs
+
+        collegeDetailsRef.child("name").setValue(collegeName.toString());
+        collegeDetailsRef.child("usn").setValue(usn.toString());
+        collegeDetailsRef.child("year").setValue(year);
+        collegeDetailsRef.child("course").setValue(course);
     }
 
     private void updateFirebaseDatabase(int type) {
-        mRef.child("type").setValue(type);
+        collegeDetailsRef.child("type").setValue(type == 0 ? "Student" : "Lecturer");
     }
 
 
@@ -162,17 +173,6 @@ public class UserDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // get extras
-        Bundle b = getIntent().getBundleExtra(BUNDLE_KEY);
-        if (b != null) {
-            int type = getIntent().getIntExtra(INTENT_KEY, -1);
-            if (type != -1) {
-                // update the type variable in the database
-                updateFirebaseDatabase(type);
-            }
-        }
-
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/regular.ttf")
                 .setFontAttrId(R.attr.fontPath)
@@ -182,8 +182,14 @@ public class UserDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_details);
         ButterKnife.bind(this);
 
-        // set firebase stuffs
-        mRef = FirebaseDatabase.getInstance().getReference(Constants.USER_REF_STRING).child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        // animate card
+        MaterialIn.animate(cardDetails);
+
+        // set up Database Reference
+        collegeDetailsRef = FirebaseDatabase.getInstance()
+                .getReference(Constants.USER_REF_STRING)
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child("college_details");
 
         ArrayAdapter coursesList = ArrayAdapter.createFromResource(this, R.array.courses_list, R.layout.spinner_item);
         ArrayAdapter yearList = ArrayAdapter.createFromResource(this, R.array.year_list, R.layout.spinner_item);
@@ -234,6 +240,9 @@ public class UserDetailsActivity extends AppCompatActivity {
             }
         });
 
+        // get the user type
+        type = getIntent().getIntExtra(Constants.INTENT_SEND_KEY, 0);
+        Log.d(TAG, "Type: " + type);
     }
 
     boolean isCollegeNameValid(CharSequence s) {

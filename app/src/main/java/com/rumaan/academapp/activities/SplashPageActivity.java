@@ -7,16 +7,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
-import android.transition.Slide;
 import android.util.Log;
-import android.view.Gravity;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.auth.BuildConfig;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,6 +43,7 @@ public class SplashPageActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
     private boolean dataSet = false;
     private DatabaseReference userRef;
+    private DatabaseReference ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,22 +107,40 @@ public class SplashPageActivity extends AppCompatActivity {
                     Log.d(TAG, "onAuthChanged: signed in");
                     Log.i(TAG, "UID : " + firebaseUser.getUid());
 
-                    // check whether all fields for current user in the database aren't empty
-                    if (isAllDataAvailable()) {
-                        // goto main activity
-                        startActivity(new Intent(SplashPageActivity.this, MainActivity.class));
-                    } else {
-                        // goto corresponding missing activity
-                        startActivity(new Intent(SplashPageActivity.this, ChooseTypeActivity.class));
-                        getWindow().setExitTransition(
-                                new Slide(
-                                        Gravity.BOTTOM)
-                                        .setDuration(300)
-                                        .setInterpolator(
-                                                new FastOutSlowInInterpolator()
-                                        )
-                        );
-                    }
+                    // add available user details into the database
+                    userRef = FirebaseDatabase.getInstance().getReference(Constants.USER_REF_STRING)
+                            .child(firebaseUser.getUid());
+                    userRef.child("name").setValue(firebaseUser.getDisplayName());
+                    userRef.child("email").setValue(firebaseUser.getEmail());
+
+                    // check for 'type' set in the Firebase Db
+                    // if its null goto ChooseType
+                    // else Goto MainActivity
+                    ref = FirebaseDatabase.getInstance()
+                            .getReference(Constants.USER_REF_STRING)
+                            .child(firebaseUser.getUid())
+                            .child("college_details")
+                            .getRef();
+                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.getValue() == null) {
+                                Log.d(TAG, "College Details Empty!");
+                                // goto choose type activity instantly
+                                startActivity(new Intent(SplashPageActivity.this, ChooseTypeActivity.class));
+                                SplashPageActivity.this.finish();
+                            } else {
+                                Log.d(TAG, "College Details Present: " + dataSnapshot.getValue());
+                                startActivity(new Intent(SplashPageActivity.this, MainActivity.class));
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            showToast(getString(R.string.network_error));
+                        }
+                    });
+
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthChanged: signed out");
@@ -134,41 +148,15 @@ public class SplashPageActivity extends AppCompatActivity {
                     // create sign in intent if logged out
                     startActivityForResult(
                             AuthUI.getInstance().createSignInIntentBuilder()
-                                    .setIsSmartLockEnabled(!BuildConfig.DEBUG)
+                                    .setIsSmartLockEnabled(false)
+                                    .setAllowNewEmailAccounts(true)
                                     .setProviders(Arrays.asList(
                                             new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
                                             new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build()))
                                     .build(), RC_SIGN_IN);
                 }
-
             }
         };
-    }
-
-    private boolean isAllDataAvailable() {
-        // Reference to the USER Json in the Database
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        userRef = FirebaseDatabase.getInstance().getReference(Constants.USER_REF_STRING).child(uid);
-
-        userRef.child("type").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Check if USER TYPE is set int the database
-                String type = dataSnapshot.getValue(String.class);
-                if (TextUtils.isEmpty(type)) {
-                    dataSet = false;
-                    Log.d(TAG, "User Type Not Set");
-                } else {
-                    dataSet = true;
-                    Log.d(TAG, "User Type : " + type);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-        return dataSet;
     }
 
     @Override
@@ -198,10 +186,9 @@ public class SplashPageActivity extends AppCompatActivity {
             IdpResponse idpResponse = IdpResponse.fromResultIntent(data);
 
             if (resultCode == RESULT_OK) {
-                // successfully signed in
+                // goto main activity
                 startActivity(new Intent(SplashPageActivity.this, MainActivity.class));
-                finish();
-                return;
+
             } else {
                 if (idpResponse == null) {
                     // user pressed back button

@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.roughike.bottombar.BottomBar;
@@ -57,13 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mDatabaseRef = mFirebaseDatabase.getReference();
         mUsersRef = mDatabaseRef.child("users").getRef();
 
-        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        name = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
-        email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-
-        // set name and email values in Firebase Database
-        setReferenceValues();
-
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/regular.ttf")
                 .setFontAttrId(R.attr.fontPath)
@@ -73,12 +65,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         /* Get the custom typeface */
         bottomBar.setTabTitleTypeface(CustomFont.getInstance(getApplicationContext()).getTypeFace(CustomFont.Regular));
-    }
-
-    /* Set the user name and email in Database */
-    private void setReferenceValues() {
-        mUsersRef.child(uid).child("name").setValue(name);
-        mUsersRef.child(uid).child("email").setValue(email);
     }
 
     @Override
@@ -146,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBackPressed() {
         count++;
-        if (count > 1) {
+        if (count >= 1) {
             /* If count is greater than 1, quit */
             finishAffinity();
         } else {
