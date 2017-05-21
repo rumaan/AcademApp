@@ -23,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rumaan.academapp.R;
 import com.rumaan.academapp.model.Constants;
+import com.rumaan.academapp.model.User;
 
 import java.util.Arrays;
 
@@ -98,7 +99,7 @@ public class SplashPageActivity extends AppCompatActivity {
     private void setAuthListener() {
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+            public void onAuthStateChanged(@NonNull final FirebaseAuth firebaseAuth) {
                 // call back for auth state change
                 firebaseUser = firebaseAuth.getCurrentUser();
                 if (firebaseUser != null) {
@@ -120,17 +121,22 @@ public class SplashPageActivity extends AppCompatActivity {
                             .getReference(Constants.USER_REF_STRING)
                             .child(firebaseUser.getUid())
                             .child("college_details")
+                            .child("year")
                             .getRef();
                     ref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if (dataSnapshot.getValue() == null) {
-                                Log.d(TAG, "College Details Empty!");
+                                Log.d(TAG, "College Details is Empty!");
+                                // FIXME: currently checking for year in the database
+                                // FIXME: check for the entire college_details node
                                 // goto choose type activity instantly
                                 startActivity(new Intent(SplashPageActivity.this, ChooseTypeActivity.class));
                                 SplashPageActivity.this.finish();
                             } else {
                                 Log.d(TAG, "College Details Present: " + dataSnapshot.getValue());
+                                User.getInstance().setName(firebaseUser.getDisplayName());
+                                User.getInstance().setType(dataSnapshot.getValue(String.class));
                                 startActivity(new Intent(SplashPageActivity.this, MainActivity.class));
                             }
                         }

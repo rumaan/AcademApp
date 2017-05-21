@@ -1,69 +1,90 @@
 package com.rumaan.academapp.model;
 
-import android.net.Uri;
+import java.util.List;
 
 /**
  * Created by Rumaan on 21-May-17.
  */
 
 public class ForumPost {
-    private String title;
-    private String description;
-    private int usersJoined;
-    private String postPersonName;
-    private String postPersonType;
-    private Uri postPersonImageUri;
+    private String post_title;
+    private String post_desc;
+    private List<String> joined_users;
+    private String name;
+    private String type;
+    private String uid;
 
-    public ForumPost(String title, String description) {
-        this.title = title;
-        this.description = description;
+    public ForumPost(String post_title, String post_desc, List<String> joined_users, String name, String type, String uid) {
+        this.post_title = post_title;
+        this.post_desc = post_desc;
+        this.joined_users = joined_users;
+        this.name = name;
+        this.type = type;
+        this.uid = uid;
     }
 
-    public String getTitle() {
-        return title;
+    public ForumPost() {
+
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public ForumPost(String post_title, String post_desc) {
+        this.post_title = post_title;
+        this.post_desc = post_desc;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPost_title() {
+        return post_title;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public ForumPost setPost_title(String post_title) {
+        this.post_title = post_title;
+        return this;
     }
 
-    public int getUsersJoined() {
-        return usersJoined;
+    public String getPost_desc() {
+        return post_desc;
     }
 
-    public void setUsersJoined(int usersJoined) {
-        this.usersJoined = usersJoined;
+    public ForumPost setPost_desc(String post_desc) {
+        this.post_desc = post_desc;
+        return this;
     }
 
-    public String getPostPersonName() {
-        return postPersonName;
+    public List<String> getJoined_users() {
+        return joined_users;
     }
 
-    public void setPostPersonName(String postPersonName) {
-        this.postPersonName = postPersonName;
+    public ForumPost setJoined_users(List<String> joined_users) {
+        this.joined_users = joined_users;
+        return this;
     }
 
-    public String getPostPersonType() {
-        return postPersonType;
+    public String getName() {
+        return name;
     }
 
-    public void setPostPersonType(String postPersonType) {
-        this.postPersonType = postPersonType;
+    public ForumPost setName(String name) {
+        this.name = name;
+        return this;
     }
 
-    public Uri getPostPersonImageUri() {
-        return postPersonImageUri;
+    public String getType() {
+        return type;
     }
 
-    public void setPostPersonImageUri(Uri postPersonImageUri) {
-        this.postPersonImageUri = postPersonImageUri;
+    public ForumPost setType(String type) {
+        this.type = type;
+        return this;
     }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public ForumPost setUid(String uid) {
+        this.uid = uid;
+        return this;
+    }
+
+
 }

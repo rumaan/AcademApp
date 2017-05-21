@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.rumaan.academapp.R;
 import com.rumaan.academapp.adapters.ForumPostListAdaper;
 import com.rumaan.academapp.model.ForumPost;
+import com.rumaan.academapp.model.MaterialIn;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +69,7 @@ public class ForumFragment extends Fragment {
         forumRecycler.setHasFixedSize(true);
         forumRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
         forumRecycler.setItemAnimator(new DefaultItemAnimator());
+        MaterialIn.animate(forumRecycler);
     }
 
 }
