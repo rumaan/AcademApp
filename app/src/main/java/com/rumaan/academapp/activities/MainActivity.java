@@ -1,23 +1,19 @@
 package com.rumaan.academapp.activities;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.IdRes;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 import com.rumaan.academapp.R;
-import com.rumaan.academapp.fragments.AcademicsFragment;
 import com.rumaan.academapp.fragments.ForumFragment;
-import com.rumaan.academapp.fragments.ProfileFragment;
 import com.rumaan.academapp.model.CustomFont;
 
 import butterknife.BindView;
@@ -32,9 +28,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /* For back button */
     private int count = 0;
 
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mDatabaseRef;
-    private DatabaseReference mUsersRef;
 
     private String uid, name, email;
 
@@ -52,9 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /*
           Firebase Reference Stuffs go here
           */
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseRef = mFirebaseDatabase.getReference();
-        mUsersRef = mDatabaseRef.child("users").getRef();
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/regular.ttf")
@@ -76,55 +66,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onTabSelected(@IdRes int tabId) {
         switch (tabId) {
             case R.id.forum_tab_item:
-                // change the status bar background accordingly
-                getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.blue));
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    // set the navigation bar color
-                    getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.blue));
-                }
+                // forum fragment
                 ForumFragment forumFragment = new ForumFragment();
-
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.root_view, forumFragment)
-                        .commit();
-
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.contentContainer, forumFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
                 break;
             case R.id.academics_tab_item:
-                // change the status bar background accordingly
-                getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.Emerald_flat));
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    // set the navigation bar color
-                    getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.Emerald_flat));
-                }
-
-                // replace with academic fragment
-                AcademicsFragment academicsFragment = new AcademicsFragment();
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.root_view, academicsFragment)
-                        .commit();
-
+                // academics fragment
                 break;
             case R.id.profile_tab_item:
-                // change the status bar background accordingly
-                getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.grey));
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    // set the navigation bar color
-                    getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.Asphalt_grey));
-                }
-
-
-                // u get the point.
-                ProfileFragment profileFragment = new ProfileFragment();
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.root_view, profileFragment)
-                        .commit();
-
+                // profile fragment
+                break;
+            case R.id.options_tab_item:
+                // options fragment
+                Toast.makeText(this, "Option item selected", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

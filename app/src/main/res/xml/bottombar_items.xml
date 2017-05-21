@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <tabs>
     <tab
-        barColorWhenSelected="@color/blue"
         icon="@drawable/ic_forum"
         id="@+id/forum_tab_item"
         title="Forum"/>
     <tab
-        barColorWhenSelected="@color/Emerald_flat"
         icon="@drawable/ic_school"
         id="@+id/academics_tab_item"
         title="Academics"/>
     <tab
-        barColorWhenSelected="@color/Asphalt_grey"
-
         icon="@drawable/ic_assignment_ind"
         id="@+id/profile_tab_item"
         title="Profile"/>
+    <tab
+        icon="@drawable/ic_more_vert_black_24px"
+        id="@+id/options_tab_item"
+        title="Options"
+        />
 </tabs>
