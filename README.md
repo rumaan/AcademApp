@@ -3,4 +3,4 @@ Android Application for Educational Institutes. App allows seamless login/sign-u
 App uses Firebase Database for storing/retrieval of data. FirebaseAuth for Authentication. Firebase Storage as a file storage mechanisim.
 
 # Sceenshots
-!(https://github.com/rumaan/AcademApp/blob/master/img/screenshot_forum.png)
+![Forum](AcademApp/img/screenshot_forum.png)
