@@ -21,6 +21,7 @@ import java.util.List;
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +37,13 @@ public class ForumFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @OnClick(R.id.fab_add_forum_post)
+    void onClick() {
+        // start the dialog fragment
+        CreateDiscussionFragment createDiscussionFragment = new CreateDiscussionFragment();
+        createDiscussionFragment.show(getFragmentManager(), "Create Discussion");
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

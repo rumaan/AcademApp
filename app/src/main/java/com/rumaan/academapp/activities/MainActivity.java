@@ -1,5 +1,6 @@
 package com.rumaan.academapp.activities;
 
+import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 import com.rumaan.academapp.R;
+import com.rumaan.academapp.fragments.CreateDiscussionFragment;
 import com.rumaan.academapp.fragments.ForumFragment;
 import com.rumaan.academapp.model.CustomFont;
 
@@ -21,15 +23,18 @@ import butterknife.ButterKnife;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnTabSelectListener {
+public class MainActivity
+        extends AppCompatActivity
+        implements View.OnClickListener,
+        OnTabSelectListener,
+        CreateDiscussionFragment.NoticeDialogListener {
+
     @BindView(R.id.bottom_bar)
     BottomBar bottomBar;
-
     /* For back button */
     private int count = 0;
-
-
     private String uid, name, email;
+
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -107,6 +112,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }, 2000);
         }
         super.onBackPressed();
+    }
+
+    @Override
+    public void onPositiveClick(DialogFragment dialog, String title, String desc) {
+        Toast.makeText(this, "Title: " + title, Toast.LENGTH_SHORT).show();
     }
 
 }
