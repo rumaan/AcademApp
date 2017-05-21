@@ -25,6 +25,10 @@
         <item name="android:statusBarColor">@color/Emerald_flat</item>
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowContentTransitions">true</item>
+        <item name="colorPrimary">@color/Emerald_flat</item>
+        <item name="colorPrimaryDark">@color/green</item>
+        <item name="colorAccent">@color/Asphalt_grey</item>
+
         <item name="android:windowExitTransition">@transition/slide_transtion</item>
         <item name="android:windowAllowEnterTransitionOverlap">false</item>
     </style>

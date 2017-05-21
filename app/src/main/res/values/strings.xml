@@ -14,7 +14,7 @@
 
     <string name="shared_transition_img">Shared Transition Name</string>
     <string name="network_error">Network Connectivity Issues!\nPlease try again later.</string>
-    <string name="lorem_ipsum">orem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel est semper, dignissim neque eu, lacinia felis. Quisque mollis eros enim, quis vehicula mauris scelerisque at. Fusce sollicitudin, justo vitae tempus luctus, nisl tortor cursus arcu, eget mollis augue felis nec justo. Donec orci augue, iaculis in eleifend sit amet, volutpat vel neque. Phasellus semper orci in mi hendrerit, at convallis dui vulputate. </string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel est semper, dignissim neque eu, lacinia felis. Quisque mollis eros enim, quis vehicula mauris scelerisque at. Fusce sollicitudin, justo vitae tempus luctus, nisl tortor cursus arcu, eget mollis augue felis nec justo. Donec orci augue, iaculis in eleifend sit amet, volutpat vel neque. Phasellus semper orci in mi hendrerit, at convallis dui vulputate. </string>
 
     <array name="college_names">
         <item>NITK Surathkal</item>

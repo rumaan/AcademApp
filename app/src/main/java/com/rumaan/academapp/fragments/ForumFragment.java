@@ -53,6 +53,8 @@ public class ForumFragment extends Fragment {
         List<ForumPost> list = new ArrayList<>();
         list.add(new ForumPost("Discussion Title here", loremIpsum));
         list.add(new ForumPost("Discussion Title here", loremIpsum));
+        list.add(new ForumPost("Discussion Title here", loremIpsum));
+        list.add(new ForumPost("Discussion Title here", loremIpsum));
         ForumPostListAdaper forumPostListAdaper = new ForumPostListAdaper(view.getContext(), list);
         forumRecycler.setAdapter(forumPostListAdaper);
         forumRecycler.setHasFixedSize(true);

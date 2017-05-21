@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (tabId) {
             case R.id.forum_tab_item:
                 // forum fragment
+                // TODO: design singleton pattern for fragments
                 ForumFragment forumFragment = new ForumFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

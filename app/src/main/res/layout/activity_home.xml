@@ -18,7 +18,6 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         app:bb_activeTabColor="@color/Emerald_flat"
-        app:bb_behavior="underNavbar"
         app:bb_tabXmlResource="@xml/bottombar_items"
         app:bb_titleTypeFace="fonts/regular.ttf"/>
 </RelativeLayout>

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:tools="http://schemas.android.com/tools">
     <corners
         android:bottomLeftRadius="0dp"
         android:bottomRightRadius="20dp"
         android:topLeftRadius="20dp"
         android:topRightRadius="0dp"/>
-    <solid android:color="@android:color/white"/>
+    <solid
+        android:color="@android:color/white"
+        tools:color="@color/tw__solid_white"/>
 
 </shape>
