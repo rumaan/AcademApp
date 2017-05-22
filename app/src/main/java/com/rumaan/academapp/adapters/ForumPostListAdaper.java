@@ -19,11 +19,11 @@ import butterknife.ButterKnife;
 
 public class ForumPostListAdaper extends RecyclerView.Adapter<ForumPostListAdaper.ViewHolder> {
     private List<ForumPost> forumPostList;
-    private Context mContext;
+
 
     public ForumPostListAdaper(Context context, List<ForumPost> forumPosts) {
         this.forumPostList = new ArrayList<>(forumPosts);
-        this.mContext = context;
+
     }
 
     @Override

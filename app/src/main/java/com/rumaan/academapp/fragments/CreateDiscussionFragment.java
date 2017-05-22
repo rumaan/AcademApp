@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.rumaan.academapp.R;
+import com.rumaan.academapp.model.ForumPost;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,6 +66,7 @@ public class CreateDiscussionFragment extends DialogFragment {
                             discussinDesc.requestFocus();
                         } else {
                             noticeDialogListener.onPositiveClick(CreateDiscussionFragment.this, title, desc);
+                            ForumFragment.changedData(new ForumPost(title, desc));
                             dialog.dismiss();
                         }
                     }

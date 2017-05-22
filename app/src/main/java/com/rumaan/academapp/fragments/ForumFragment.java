@@ -29,6 +29,9 @@ import butterknife.OnClick;
  */
 public class ForumFragment extends Fragment {
 
+    // hook up recycler view
+    static List<ForumPost> list = new ArrayList<>();
+    static ForumPostListAdaper forumPostListAdaper;
     @BindView(R.id.forum_recycler)
     RecyclerView forumRecycler;
     @BindString(R.string.lorem_ipsum)
@@ -38,12 +41,17 @@ public class ForumFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static void changedData(ForumPost forumPost) {
+        list.add(forumPost);
+
+        forumPostListAdaper.notifyDataSetChanged();
+    }
+
     @OnClick(R.id.fab_add_forum_post)
     void onClick() {
         // start the dialog fragment
         CreateDiscussionFragment createDiscussionFragment = new CreateDiscussionFragment();
         createDiscussionFragment.show(getFragmentManager(), "Create Discussion");
-
     }
 
     @Override
@@ -58,13 +66,12 @@ public class ForumFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // hook up recycler view
-        List<ForumPost> list = new ArrayList<>();
+
         list.add(new ForumPost("Discussion Title here", loremIpsum));
         list.add(new ForumPost("Discussion Title here", loremIpsum));
         list.add(new ForumPost("Discussion Title here", loremIpsum));
         list.add(new ForumPost("Discussion Title here", loremIpsum));
-        ForumPostListAdaper forumPostListAdaper = new ForumPostListAdaper(view.getContext(), list);
+        forumPostListAdaper = new ForumPostListAdaper(view.getContext(), list);
         forumRecycler.setAdapter(forumPostListAdaper);
         forumRecycler.setHasFixedSize(true);
         forumRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));

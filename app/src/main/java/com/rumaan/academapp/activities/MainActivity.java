@@ -22,8 +22,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 import com.rumaan.academapp.R;
+import com.rumaan.academapp.fragments.AcademicsFragment;
 import com.rumaan.academapp.fragments.CreateDiscussionFragment;
 import com.rumaan.academapp.fragments.ForumFragment;
+import com.rumaan.academapp.fragments.OptionsFragment;
+import com.rumaan.academapp.fragments.ProfileFragment;
 import com.rumaan.academapp.model.CustomFont;
 import com.rumaan.academapp.model.ForumPost;
 import com.rumaan.academapp.model.User;
@@ -133,19 +136,33 @@ public class MainActivity
                 ForumFragment forumFragment = new ForumFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.contentContainer, forumFragment);
+                fragmentTransaction.replace(R.id.contentContainer, forumFragment, "forumFragment");
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;
             case R.id.academics_tab_item:
                 // academics fragment
+                AcademicsFragment academicsFragment = new AcademicsFragment();
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentContainer, academicsFragment)
+                        .commit();
                 break;
             case R.id.profile_tab_item:
                 // profile fragment
+                ProfileFragment profileFragment = new ProfileFragment();
+                getFragmentManager().
+                        beginTransaction()
+                        .replace(R.id.contentContainer, profileFragment, "profileFragmenr")
+                        .commit();
                 break;
             case R.id.options_tab_item:
                 // options fragment
-                Toast.makeText(this, "Option item selected", Toast.LENGTH_SHORT).show();
+                OptionsFragment optionsFragment = new OptionsFragment();
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentContainer, optionsFragment, "optionsFragment")
+                        .commit();
                 break;
         }
     }
