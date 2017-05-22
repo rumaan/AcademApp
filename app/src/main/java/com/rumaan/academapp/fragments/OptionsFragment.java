@@ -2,7 +2,6 @@ package com.rumaan.academapp.fragments;
 
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.rumaan.academapp.R;
-import com.rumaan.academapp.activities.SplashPageActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -28,8 +26,6 @@ public class OptionsFragment extends Fragment {
     void onClick() {
         Toast.makeText(getActivity(), "Logging Out.. please wait!", Toast.LENGTH_SHORT).show();
         FirebaseAuth.getInstance().signOut();
-        getActivity().finishAffinity();
-        startActivity(new Intent(getActivity(), SplashPageActivity.class));
     }
 
     @Override

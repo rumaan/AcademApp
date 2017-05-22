@@ -193,7 +193,8 @@ public class SplashPageActivity extends AppCompatActivity {
 
             if (resultCode == RESULT_OK) {
                 // goto main activity
-                startActivity(new Intent(SplashPageActivity.this, MainActivity.class));
+                // FIXME: for testing purposes only
+                startActivity(new Intent(SplashPageActivity.this, ChooseTypeActivity.class));
 
             } else {
                 if (idpResponse == null) {

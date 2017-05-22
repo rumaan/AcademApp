@@ -4,9 +4,11 @@ import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -53,6 +55,7 @@ public class MainActivity
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference postsRef;
     private FirebaseUser firebaseUser;
+    private FirebaseAuth mFirebaseAuth;
 
 
     /* Stores the forumPostList , as a backup copy of FirebaseDatabase */
@@ -69,14 +72,27 @@ public class MainActivity
         setContentView(R.layout.activity_home);
 
         ButterKnife.bind(this);
-        /*
-          Firebase Reference Stuffs go here
-          */
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/regular.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build());
+
+        /*
+          Firebase Reference Stuffs go here
+          */
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (firebaseAuth.getCurrentUser() == null) {
+                    // finish the activity
+                    finish();
+                    startActivity(new Intent(getApplicationContext(), SplashPageActivity.class));
+                }
+            }
+        };
+
         /* hook up listeners */
         bottomBar.setOnTabSelectListener(this);
 
@@ -87,8 +103,7 @@ public class MainActivity
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         postsRef = FirebaseDatabase.getInstance()
-                .getReference("forum_posts")
-                .child(User.getInstance().getType());
+                .getReference("forum_posts");
 
         // get the posts from the posts reference
         ChildEventListener childEventListener = new ChildEventListener() {
@@ -119,7 +134,6 @@ public class MainActivity
         };
         postsRef.addChildEventListener(childEventListener);
 
-        Log.d(TAG, User.getInstance().getType());
     }
 
     @Override
@@ -203,4 +217,17 @@ public class MainActivity
         ref.child("type").setValue(User.getInstance().getType());
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mFirebaseAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mFirebaseAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
 }
